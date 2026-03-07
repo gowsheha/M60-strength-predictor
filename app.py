@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import joblib
 
-lr_model = joblib.load("linear_model.pkl")
+lr_model = joblib.load("models/linear_model.pkl")
 svr_model = joblib.load("svr_model.pkl")
 rf_model = joblib.load("rf_model.pkl")
 
