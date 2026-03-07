@@ -26,6 +26,8 @@ ca = st.number_input("Coarse Aggregate KG")
 if st.button("Predict Strength"):
 
     sample = np.array([[cement, ggbs, silica, flyash, water, wc_ratio, sp, fa, ca]])
+   
+    st.write("Input shape:", sample.shape)
 
     lr = lr_model.predict(sample)[0]
     svr = svr_model.predict(sample)[0]
