@@ -9,9 +9,9 @@ rf_model = joblib.load("rf_model.pkl")
 st.title("Concrete Strength Predictor")
 
 cement = st.number_input("Cement KG")
+flyash = st.number_input("Fly Ash KG")
 ggbs = st.number_input("GGBS KG")
 silica = st.number_input("Silica Fume KG")
-flyash = st.number_input("Fly Ash KG")
 water = st.number_input("Water KG")
 if cement > 0:
     wc_ratio = water / cement
@@ -19,13 +19,13 @@ if cement > 0:
 else:
     wc_ratio = 0
     st.write("Water-Cement Ratio: Waiting for cement value")
-sp = st.number_input("Superplasticizer")
 fa = st.number_input("Fine Aggregate KG")
 ca = st.number_input("Coarse Aggregate KG")
+sp = st.number_input("Superplasticizer")
 
 if st.button("Predict Strength"):
 
-    sample = np.array([[cement, ggbs, silica, flyash, water, wc_ratio, sp, fa, ca]])
+    sample = np.array([[cement, flyash, ggbs, silica, flyash, water, wc_ratio, fa, ca, sp]])
    
     st.write("Input shape:", sample.shape)
 
