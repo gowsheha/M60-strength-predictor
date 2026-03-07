@@ -13,18 +13,26 @@ ggbs = st.number_input("GGBS")
 silica = st.number_input("Silica Fume")
 flyash = st.number_input("Fly Ash")
 water = st.number_input("Water")
+if cement > 0:
+    wc_ratio = water / cement
+    st.write("Water-Cement Ratio:", round(wc_ratio, 3))
+else:
+    wc_ratio = 0
+    st.write("Water-Cement Ratio: Waiting for cement value")
 sp = st.number_input("Superplasticizer")
 fa = st.number_input("Fine Aggregate")
 ca = st.number_input("Coarse Aggregate")
 
 if st.button("Predict Strength"):
-    
-    sample = np.array([[cement, ggbs, silica, flyash, water, sp, fa, ca]])
-    
+
+    sample = np.array([[cement, ggbs, silica, flyash, water, sp, fa, ca, wc_ratio]])
+
     lr = lr_model.predict(sample)[0]
     svr = svr_model.predict(sample)[0]
     rf = rf_model.predict(sample)[0]
 
-    st.write("Linear Regression:", lr)
-    st.write("SVR:", svr)
-    st.write("Random Forest:", rf)
+    st.subheader("Predicted Compressive Strength")
+
+    st.write(f"Linear Regression: {lr:.2f} MPa")
+    st.write(f"SVR: {svr:.2f} MPa")
+    st.write(f"Random Forest: {rf:.2f} MPa")
