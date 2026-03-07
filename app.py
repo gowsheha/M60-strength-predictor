@@ -2,9 +2,9 @@ import streamlit as st
 import numpy as np
 import joblib
 
-lr_model = joblib.load("linear_model.pkl")
-svr_model = joblib.load("svr_model.pkl")
-rf_model = joblib.load("rf_model.pkl")
+lr_model = joblib.load("linear_model(4).pkl")
+svr_model = joblib.load("svr_model(3).pkl")
+rf_model = joblib.load("rf_model(3).pkl")
 
 st.title("Concrete Strength Predictor")
 
