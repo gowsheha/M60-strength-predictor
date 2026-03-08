@@ -24,8 +24,21 @@ ca = st.number_input("Coarse Aggregate KG")
 sp = st.number_input("Superplasticizer")
 
 if st.button("Predict Strength"):
-st.write(sample)
-    sample = np.array([[cement, flyash, ggbs, silica, flyash, water, wc_ratio, fa, ca, sp]])
+
+    import pandas as pd
+
+sample = pd.DataFrame([[cement, flyash, ggbs, silica, water, wc_ratio, fa, ca, sp]],
+columns=[
+"Cement_kg",
+"Fly_Ash_kg",
+"GGBS_kg",
+"Silica_Fume_kg",
+"Water_kg",
+"W_C_ratio",
+"Fine_Aggregate_kg",
+"Coarse_Aggregate_kg",
+"Superplasticizer_L"
+])
    
 
     lr = lr_model.predict(sample)[0]
