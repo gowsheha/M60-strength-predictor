@@ -43,6 +43,6 @@ if st.button("Predict Strength"):
     svr = svr_model.predict(sample)[0]
     rf = rf_model.predict(sample)[0]
 
-    st.write("Linear Regression:", lr)
-    st.write("SVR:", svr)
-    st.write("Random Forest:", rf)
+    st.write("Linear Regression:", round(lr,2), "MPa")
+    st.write("SVR:", round(svr,2), "MPa")
+    st.write("Random Forest:", round(rf,2), "MPa")
