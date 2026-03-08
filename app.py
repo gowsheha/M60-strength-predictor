@@ -25,28 +25,23 @@ sp = st.number_input("Superplasticizer")
 
 if st.button("Predict Strength"):
 
-    import pandas as pd
-
-sample = pd.DataFrame([[cement, flyash, ggbs, silica, water, wc_ratio, fa, ca, sp]],
-columns=[
-"Cement_kg",
-"Fly_Ash_kg",
-"GGBS_kg",
-"Silica_Fume_kg",
-"Water_kg",
-"W_C_ratio",
-"Fine_Aggregate_kg",
-"Coarse_Aggregate_kg",
-"Superplasticizer_L"
-])
-   
+    sample = pd.DataFrame([[cement, flyash, ggbs, silica, water, wc_ratio, fa, ca, sp]],
+    columns=[
+    "Cement_kg",
+    "Fly_Ash_kg",
+    "GGBS_kg",
+    "Silica_Fume_kg",
+    "Water_kg",
+    "W_C_ratio",
+    "Fine_Aggregate_kg",
+    "Coarse_Aggregate_kg",
+    "Superplasticizer_L"
+    ])
 
     lr = lr_model.predict(sample)[0]
     svr = svr_model.predict(sample)[0]
     rf = rf_model.predict(sample)[0]
 
-    st.subheader("Predicted Compressive Strength")
-
-    st.write(f"Linear Regression: {lr:.2f} MPa")
-    st.write(f"SVR: {svr:.2f} MPa")
-    st.write(f"Random Forest: {rf:.2f} MPa")
+    st.write("Linear Regression:", lr)
+    st.write("SVR:", svr)
+    st.write("Random Forest:", rf)
