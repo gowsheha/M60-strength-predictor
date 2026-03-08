@@ -27,7 +27,6 @@ if st.button("Predict Strength"):
 
     sample = np.array([[cement, flyash, ggbs, silica, flyash, water, wc_ratio, fa, ca, sp]])
    
-    st.write("Input shape:", sample.shape)
 
     lr = lr_model.predict(sample)[0]
     svr = svr_model.predict(sample)[0]
