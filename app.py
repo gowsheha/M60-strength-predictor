@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import joblib
 
 lr_model = joblib.load("linear_model(4).pkl")
