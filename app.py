@@ -24,7 +24,7 @@ ca = st.number_input("Coarse Aggregate KG")
 sp = st.number_input("Superplasticizer")
 
 if st.button("Predict Strength"):
-
+st.write(sample)
     sample = np.array([[cement, flyash, ggbs, silica, flyash, water, wc_ratio, fa, ca, sp]])
    
 
