@@ -23,7 +23,14 @@ else:
 fa = st.number_input("Fine Aggregate KG")
 ca = st.number_input("Coarse Aggregate KG")
 sp = st.number_input("Superplasticizer")
-
+# Material Rates (₹ per kg)
+cement_rate = 7.5
+flyash_rate = 1.5      # you can assume ~₹1–2/kg
+ggbs_rate = 3
+silica_rate = 20
+fine_agg_rate = 1.2
+coarse_agg_rate = 1.1
+sp_rate = 50           # ₹ per litre (approx)
 if st.button("Predict Strength"):
 
     sample = pd.DataFrame([[cement, flyash, ggbs, silica, water, wc_ratio, fa, ca, sp]],
@@ -42,7 +49,15 @@ if st.button("Predict Strength"):
     lr = lr_model.predict(sample)[0]
     svr = svr_model.predict(sample)[0]
     rf = rf_model.predict(sample)[0]
-
+ cost = (
+        cement * cement_rate +
+        flyash * flyash_rate +
+        ggbs * ggbs_rate +
+        silica * silica_rate +
+        fa * fine_agg_rate +
+        ca * coarse_agg_rate +
+        sp * sp_rate
+    )
     st.write("Linear Regression:", round(lr,2), "MPa")
     st.write("SVR:", round(svr,2), "MPa")
     st.write("Random Forest:", round(rf,2), "MPa")
