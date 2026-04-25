@@ -35,21 +35,27 @@ if st.button("Predict Strength"):
 
     sample = pd.DataFrame([[cement, flyash, ggbs, silica, water, wc_ratio, fa, ca, sp]],
     columns=[
-    "Cement_kg",
-    "Fly_Ash_kg",
-    "GGBS_kg",
-    "Silica_Fume_kg",
-    "Water_kg",
-    "W_C_ratio",
-    "Fine_Aggregate_kg",
-    "Coarse_Aggregate_kg",
-    "Superplasticizer_L"
+        "Cement_kg",
+        "Fly_Ash_kg",
+        "GGBS_kg",
+        "Silica_Fume_kg",
+        "Water_kg",
+        "W_C_ratio",
+        "Fine_Aggregate_kg",
+        "Coarse_Aggregate_kg",
+        "Superplasticizer_L"
     ])
 
     lr = lr_model.predict(sample)[0]
     svr = svr_model.predict(sample)[0]
     rf = rf_model.predict(sample)[0]
- cost = (
+
+    st.write("Linear Regression:", round(lr,2), "MPa")
+    st.write("SVR:", round(svr,2), "MPa")
+    st.write("Random Forest:", round(rf,2), "MPa")
+
+    # ✅ COST CALCULATION (fixed)
+    cost = (
         cement * cement_rate +
         flyash * flyash_rate +
         ggbs * ggbs_rate +
@@ -58,6 +64,6 @@ if st.button("Predict Strength"):
         ca * coarse_agg_rate +
         sp * sp_rate
     )
-    st.write("Linear Regression:", round(lr,2), "MPa")
-    st.write("SVR:", round(svr,2), "MPa")
-    st.write("Random Forest:", round(rf,2), "MPa")
+
+    st.subheader("💰 Cost Analysis")
+    st.write(f"Total Cost per m³: ₹ {round(cost,2)}")
