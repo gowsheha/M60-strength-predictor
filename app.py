@@ -63,10 +63,7 @@ if st.button("Predict Strength"):
         fa * fine_agg_rate +
         ca * coarse_agg_rate +
         sp * sp_rate
-    )
+           )
 
     st.subheader("💰 Cost Analysis")
     st.write(f"Total Cost per m³: ₹ {round(cost,2)}")
-git add .
-git commit -m "added cost analysis"
-git push
